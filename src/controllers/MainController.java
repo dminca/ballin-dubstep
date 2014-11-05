@@ -105,11 +105,11 @@ public class MainController {
         }
         
         public void modificaAngajat(AngajatDB a){
-        try {
-            angajatController.edit(a);
-        } catch (Exception ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                angajatController.edit(a);
+            } catch (Exception ex) {
+                Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     
 }
