@@ -85,5 +85,9 @@ public class MainController {
             angajat.setDepartament(departament);
             angajatController.create(angajat);
         }
+        
+        public List<AngajatDB> getAngajati(DepartamentDB d){
+            return angajatController.getAngajat(d);
+        }
     
 }

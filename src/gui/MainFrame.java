@@ -53,6 +53,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import model.AngajatDB;
 import model.DepartamentDB;
 import model.UserDB;
 
@@ -64,6 +65,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     private UserDB user; // userul curent logat
     private DefaultListModel model1;
+    private DefaultListModel model2;
     /**
      * Creates new form MainFrame
      */
@@ -73,6 +75,10 @@ public class MainFrame extends javax.swing.JFrame {
         
         model1 = new DefaultListModel();
         jList1.setModel(model1);
+        
+        model2 = new DefaultListModel();
+        jList2.setModel(model2);
+        
         setLocationRelativeTo(null);
         afisareDepartamente();
     }
@@ -83,6 +89,14 @@ public class MainFrame extends javax.swing.JFrame {
         
         for(DepartamentDB d: departamente){
             model1.addElement(d);
+        }
+    }
+    
+    private void afisareAngajati(DepartamentDB d){
+        model2.clear();
+        List<AngajatDB> angajati = MainController.getInstance().getAngajati(d);
+        for(AngajatDB a: angajati){
+            model2.addElement(a);
         }
     }
 

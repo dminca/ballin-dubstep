@@ -137,7 +137,7 @@ public class AngajatDBJpaController implements Serializable {
         }
     }
     
-    public List<AngajatDB> getAngajati(DepartamentDB d){
+    public List<AngajatDB> getAngajat(DepartamentDB d){
         EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("AngajatDB.findByDepartament");
         q.setParameter("departament", d);
