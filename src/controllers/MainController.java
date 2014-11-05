@@ -89,5 +89,16 @@ public class MainController {
         public List<AngajatDB> getAngajati(DepartamentDB d){
             return angajatController.getAngajat(d);
         }
+        
+        public void stergeDepartament(DepartamentDB d){
+            try{
+                List<AngajatDB> angajati = getAngajati(d);
+                for (AngajatDB a : angajati) {
+                    angajatController.destroy(a.getId());
+                }  
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
     
 }
