@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "AngajatDB.findAll", query = "SELECT a FROM AngajatDB a"),
     @NamedQuery(name = "AngajatDB.findById", query = "SELECT a FROM AngajatDB a WHERE a.id = :id"),
+    @NamedQuery(name = "AngajatDB.findByDepartament", query = "SELECT a FROM AngajatDB a WHERE a.departament = :departament"),
     @NamedQuery(name = "AngajatDB.findByNume", query = "SELECT a FROM AngajatDB a WHERE a.nume = :nume")})
 public class AngajatDB implements Serializable {
     private static final long serialVersionUID = 1L;
