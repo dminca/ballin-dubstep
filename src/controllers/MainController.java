@@ -8,6 +8,7 @@ package controllers;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import model.UserDB;
 
 /**
  *
@@ -28,7 +29,7 @@ public class MainController {
         angajatController = new AngajatDBJpaController(emf);
     }
     
-    private static MainController getInstance(){
+    public static MainController getInstance(){
         if(singleton == null){
             singleton = new MainController();
         }
@@ -36,6 +37,18 @@ public class MainController {
         return singleton;
     }
     
-    
+        public boolean inregistrare(String username, String parola){
+        UserDB user = userController.getUserByUsername(username);
+        
+        if(user == null){
+            user = new UserDB();
+            user.setUsername(username);
+            user.setParola(parola);
+            userController.create(user);
+            return true;
+        }
+        
+        return false;
+    }
     
 }

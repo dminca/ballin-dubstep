@@ -6,6 +6,9 @@
 
 package gui;
 
+import controllers.MainController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author student
@@ -95,7 +98,15 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String username = jTextField1.getText();
+        String parola = new String(jPasswordField1.getPassword());
+        boolean b = MainController.getInstance().inregistrare(username, parola);
         
+        if(b){
+            JOptionPane.showMessageDialog(null, "Utilizatorul a fost inregistrat!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Utilizatorul exista deja!!!");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
