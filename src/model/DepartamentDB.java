@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "DepartamentDB.findAll", query = "SELECT d FROM DepartamentDB d"),
     @NamedQuery(name = "DepartamentDB.findById", query = "SELECT d FROM DepartamentDB d WHERE d.id = :id"),
+    @NamedQuery(name = "DepartamentDB.findByUser", query = "SELECT d FROM DepartamentDB d WHERE d.user = :user"),
     @NamedQuery(name = "DepartamentDB.findByNume", query = "SELECT d FROM DepartamentDB d WHERE d.nume = :nume")})
 public class DepartamentDB implements Serializable {
     private static final long serialVersionUID = 1L;
