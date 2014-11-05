@@ -8,6 +8,7 @@ package gui;
 
 import controllers.MainController;
 import javax.swing.JOptionPane;
+import model.UserDB;
 
 /**
  *
@@ -46,6 +47,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel2.setText("PASSWD");
 
         jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Register");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +114,19 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Utilizatorul exista deja!!!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String username = jTextField1.getText();
+        String parola = new String(jPasswordField1.getPassword());
+        
+        UserDB user = MainController.getInstance().login(username, parola);
+        
+        if(user != null){
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Username sau parola gresite!!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
 
