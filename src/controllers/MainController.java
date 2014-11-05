@@ -9,6 +9,7 @@ package controllers;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import model.AngajatDB;
 import model.DepartamentDB;
 import model.UserDB;
 
@@ -76,6 +77,13 @@ public class MainController {
         
         public List<DepartamentDB> getDepartamente(UserDB user){
             return departamentController.getDepartmentsForUser(user);
+        }
+        
+        public void adaugaAngajati(String nume, DepartamentDB departament){
+            AngajatDB angajat = new AngajatDB();
+            angajat.setNume(nume);
+            angajat.setDepartament(departament);
+            angajatController.create(angajat);
         }
     
 }

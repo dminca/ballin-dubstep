@@ -4,9 +4,52 @@
  * and open the template in the editor.
  */
 
+/*
+ *TEMA PT ACASA
+ * Tabela users cu
+ *  #id
+ *  username
+ *  parola
+ * (va contine utilizatorii)
+ * 
+ * magazin
+ *  #id
+ *  nume
+ *  adresa
+ * 
+ * produs
+ *  #id
+ *  nume
+ *  pret
+ * 
+ * itemi
+ *  #id
+ *  serie
+ *  produs FK
+ *  state (care poate fi 0 = in depozit;
+ *                      1 = in magazin
+ *  magazin FK
+ *                      2 = vandut;)
+ * 
+ * Caseta de Login: User, Pass
+ * Caseta Main:
+ *      Optiuni -> Add Magazin
+ *              -> Add Produs
+ *              -> Afisare Produse -> Fereastra noua in care vedem toate produsele intr-o lista
+ *                                  -> la click dreapta -> Add item -> deschide o fereastra cu state-ul IMPLICIT in depozit
+ *                                                      -> Sterge produs
+ * La click-dreapta pe lista magazin - > popup -> Adauga item -> Fereastra noua cu o lista tuturor itemilor care se afla in depozit
+ *                                                                  si un buton cu textul ADAUGA IN MAGAZIN -> la apasare pune acei itemi in MAGAZINul respectiv
+ *                                              -> Vizualizare item din magazin -> Deschide o fereastra a itemilor din MAGAZIN, de unde
+ *                                                                                  similar modului in care itemii sunt pusi in magazin,
+ *                                                                                  vor fi scosi din magazin iar statementul va fi VANDUT                    
+ * 
+ */
+
 package gui;
 
 import controllers.MainController;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -52,6 +95,9 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -60,8 +106,29 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
+        jMenuItem2.setText("Adauga angajat");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Afisare angajati");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem3);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jScrollPane2.setViewportView(jList2);
@@ -113,6 +180,23 @@ public class MainFrame extends javax.swing.JFrame {
         afisareDepartamente();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        if(evt.getButton() == MouseEvent.BUTTON3 && jList1.getSelectedIndex() != -1){
+            jPopupMenu1.show(jList1, evt.getX(), evt.getY()); // va afisa popup-meniul
+        }
+    }//GEN-LAST:event_jList1MouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       String nume = JOptionPane.showInputDialog("Angajat:");
+       DepartamentDB d = (DepartamentDB) jList1.getSelectedValue();
+       MainController.getInstance().adaugaAngajati(nume, d);
+       
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList jList1;
@@ -120,6 +204,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
