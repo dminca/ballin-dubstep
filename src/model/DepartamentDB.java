@@ -98,7 +98,7 @@ public class DepartamentDB implements Serializable {
 
     @Override
     public String toString() {
-        return "model.DepartamentDB[ id=" + id + " ]";
+        return this.nume;
     }
     
 }

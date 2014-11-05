@@ -31,6 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
         model1 = new DefaultListModel();
         jList1.setModel(model1);
         setLocationRelativeTo(null);
+        afisareDepartamente();
     }
     
     private void afisareDepartamente(){
@@ -109,6 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         String nume = JOptionPane.showInputDialog("Departament:");
         MainController.getInstance().adaugaDepartament(nume, user);
+        afisareDepartamente();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
 
