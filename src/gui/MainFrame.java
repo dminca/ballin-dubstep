@@ -205,6 +205,7 @@ public class MainFrame extends javax.swing.JFrame {
             DepartamentDB d = (DepartamentDB) jList1.getSelectedValue();
             MainController.getInstance().stergeDepartament(d);
             afisareDepartamente();
+            model2.clear();
         }
     }//GEN-LAST:event_jList1MouseClicked
 

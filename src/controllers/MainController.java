@@ -96,6 +96,7 @@ public class MainController {
                 for (AngajatDB a : angajati) {
                     angajatController.destroy(a.getId());
                 }  
+                departamentController.destroy(d.getId());
             } catch(Exception e){
                 e.printStackTrace();
             }
