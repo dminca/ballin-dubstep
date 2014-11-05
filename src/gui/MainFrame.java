@@ -145,6 +145,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        jList2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList2);
 
         jMenu1.setText("Options");
@@ -219,6 +224,17 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
+        if(evt.getButton() == MouseEvent.BUTTON1 &&
+                evt.getClickCount() == 2 &&
+                jList2.getSelectedIndex() != -1){
+            AngajatDB a = (AngajatDB) jList2.getSelectedValue();
+            String nume = JOptionPane.showInputDialog("NUME:");
+            a.setNume(nume);
+            MainController.getInstance().modificaAngajat(a);
+        }
+    }//GEN-LAST:event_jList2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

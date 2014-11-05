@@ -7,6 +7,8 @@
 package controllers;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import model.AngajatDB;
@@ -100,6 +102,14 @@ public class MainController {
             } catch(Exception e){
                 e.printStackTrace();
             }
+        }
+        
+        public void modificaAngajat(AngajatDB a){
+        try {
+            angajatController.edit(a);
+        } catch (Exception ex) {
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     
 }
