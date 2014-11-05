@@ -50,5 +50,19 @@ public class MainController {
         
         return false;
     }
+        
+        public UserDB login(String username, String parola){
+            UserDB user = userController.getUserByUsername(username);
+
+            if(user != null){
+                if(user.getParola().equals(parola)){
+                    return user;
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        }
     
 }
