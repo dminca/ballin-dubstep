@@ -198,6 +198,14 @@ public class MainFrame extends javax.swing.JFrame {
         if(evt.getButton() == MouseEvent.BUTTON3 && jList1.getSelectedIndex() != -1){
             jPopupMenu1.show(jList1, evt.getX(), evt.getY()); // va afisa popup-meniul
         }
+        
+        if(evt.getButton() == MouseEvent.BUTTON1 &&
+                evt.getClickCount() == 2 &&
+                jList1.getSelectedIndex() != -1){
+            DepartamentDB d = (DepartamentDB) jList1.getSelectedValue();
+            MainController.getInstance().stergeDepartament(d);
+            afisareDepartamente();
+        }
     }//GEN-LAST:event_jList1MouseClicked
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
