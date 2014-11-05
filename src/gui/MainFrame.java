@@ -7,7 +7,10 @@
 package gui;
 
 import controllers.MainController;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import model.DepartamentDB;
 import model.UserDB;
 
 /**
@@ -17,12 +20,26 @@ import model.UserDB;
 public class MainFrame extends javax.swing.JFrame {
     
     private UserDB user; // userul curent logat
+    private DefaultListModel model1;
     /**
      * Creates new form MainFrame
      */
     public MainFrame(UserDB user) {
+        this.user = user;
         initComponents();
+        
+        model1 = new DefaultListModel();
+        jList1.setModel(model1);
         setLocationRelativeTo(null);
+    }
+    
+    private void afisareDepartamente(){
+        model1.clear();
+        List<DepartamentDB> departamente = MainController.getInstance().getDepartamente(user);
+        
+        for(DepartamentDB d: departamente){
+            model1.addElement(d);
+        }
     }
 
     /**

@@ -6,6 +6,7 @@
 
 package controllers;
 
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import model.DepartamentDB;
@@ -71,6 +72,10 @@ public class MainController {
             departament.setNume(nume);
             departament.setUser(user);
             departamentController.create(departament);
+        }
+        
+        public List<DepartamentDB> getDepartamente(UserDB user){
+            return departamentController.getDepartmentsForUser(user);
         }
     
 }

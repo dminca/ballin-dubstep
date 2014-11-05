@@ -166,4 +166,13 @@ public class DepartamentDBJpaController implements Serializable {
         }
     }
     
+    public List<DepartamentDB> getDepartmentsForUser(UserDB user){
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("DepartamentDB.findByUser");
+        q.setParameter("user", user);
+        
+        List<DepartamentDB> list = q.getResultList();
+        return list;
+    }
+    
 }
