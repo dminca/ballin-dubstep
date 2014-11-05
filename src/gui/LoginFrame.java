@@ -122,7 +122,9 @@ public class LoginFrame extends javax.swing.JFrame {
         UserDB user = MainController.getInstance().login(username, parola);
         
         if(user != null){
-            
+            MainFrame f = new MainFrame(user);
+            f.setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Username sau parola gresite!!");
         }

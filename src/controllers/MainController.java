@@ -8,6 +8,7 @@ package controllers;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import model.DepartamentDB;
 import model.UserDB;
 
 /**
@@ -63,6 +64,13 @@ public class MainController {
             } else {
                 return null;
             }
+        }
+        
+        public void adaugaDepartament(String nume, UserDB user){
+            DepartamentDB departament = new DepartamentDB();
+            departament.setNume(nume);
+            departament.setUser(user);
+            departamentController.create(departament);
         }
     
 }
